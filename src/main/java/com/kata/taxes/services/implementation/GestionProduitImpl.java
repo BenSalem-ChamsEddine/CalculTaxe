@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class GestionProduitImpl implements GestionProduit {
 
 
-	private static Map<String, Categorie> listeProduitAvecCategorie = new HashMap<>();
+	private static Map<String, Categorie> listeProduitAvecCategorie;
 
 	public GestionProduitImpl() {
 		remplirListeProduitDeReference();
@@ -55,7 +55,8 @@ public class GestionProduitImpl implements GestionProduit {
 
 	}
 
-	private void remplirListeProduitDeReference() {
+	private static void remplirListeProduitDeReference() {
+		listeProduitAvecCategorie = new HashMap<>();
 		listeProduitAvecCategorie.put("livre", Categorie.LIVRE);
 		listeProduitAvecCategorie.put("cd", Categorie.AUTRE);
 		listeProduitAvecCategorie.put("chocolat", Categorie.NOURRITURE);
