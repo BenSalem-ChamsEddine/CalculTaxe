@@ -12,7 +12,7 @@ public class Produit {
 	private String nom;
 	private Categorie categorie;
 	private BigDecimal prixHorsTaxe;
-	private String importe;
+	private String importe;  //TODO changer en boolean et rajouter des ressources bundles pour inputs des produits
 	private BigDecimal prixTTC;
 	private BigDecimal pourcentageTaxe;
 	private int quantite;
