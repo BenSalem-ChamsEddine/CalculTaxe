@@ -24,73 +24,73 @@ public class GestionProduitTest {
 	@Test
 	public void doitRetournerMemePrixPourCategorieNourriture() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 3 barres de chocolat à 0.85€");
-		assertEquals(2.55, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Prix retouné érroné", 2.55, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerTaxeCinqPourCentPourCategorieNourritureImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 2 chocolats importé  à 10.00€");
-		assertEquals(5, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 5, produit.getPourcentageTaxe().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerPrixAvecTaxePourCategorieNourritureImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 2 boîtes de chocolats importée à 10€");
-		assertEquals(21, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Prix avec taxe érroné", 21, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerMemePrixPourCategorieMedicament() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 3 boîtes de pilules contre la migraine à 9.75€");
-		assertEquals(29.25, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Prix retourné éroné", 29.25, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerTaxeCinqPourCentPourCategorieMedicamentImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 3 boîtes de pilules contre la migraine importés à 9.75€");
-		assertEquals(5, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 5, produit.getPourcentageTaxe().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerPrixAvecTaxePourCategorieMedicamentImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 3 boîtes de pilules contre la migraine importés à 9.75€");
-		assertEquals(30.75, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Prix avec taxe éroné", 30.75, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerTaxeDixPourCentPourCategorieLivre() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 2 livres à 12.49€");
-		assertEquals(10, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 10, produit.getPourcentageTaxe().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerTaxe15PourCentPourCategorieLivreImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 2 livres importés à 12.49€");
-		assertEquals(15, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 15, produit.getPourcentageTaxe().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerPrixAvecTaxePourCategorieLivre() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 2 livres à 12.49€");
-		assertEquals(27.5, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Prix avec taxe érroné", 27.5, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerTaxe20PourCentPourCategorieAutre() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 1 flacon de parfum à 18.99€");
-		assertEquals(20, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 20, produit.getPourcentageTaxe().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerTaxe25PourCentPourCategorieAutreImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 3 flacons de parfum importé à 47.50€");
-		assertEquals(25, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 25, produit.getPourcentageTaxe().doubleValue(), 0);
 	}
 
 	@Test
 	public void doitRetournerPrixPlusTaxe25PourCentPourCategorieAutreImportee() {
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe("* 3 flacons de parfum importé à 47.50€");
-		assertEquals(178.15, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Prix avec taxe éroné", 178.15, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 
@@ -98,12 +98,12 @@ public class GestionProduitTest {
 	public void doitAjouterProduitAuPanierEtCalculeDeTaxe() {
 		String enonce = "* 3 flacons de parfum importé à 47.50€";
 		Produit produit = gestionProduit.ajouterProduitAuPanierEtCalculeDeTaxe(enonce);
-		assertEquals("flacons de parfum ", produit.getNom());
-		assertEquals(3, produit.getQuantite());
-		assertEquals(47.50, produit.getPrixHorsTaxe().doubleValue(), 0);
-		assertEquals(25, produit.getPourcentageTaxe().doubleValue(), 0);
-		assertEquals(Categorie.AUTRE, produit.getCategorie());
-		assertEquals(178.15, produit.getPrixTTC().doubleValue(), 0);
+		assertEquals("Nom produit érroné", "flacons de parfum ", produit.getNom());
+		assertEquals("Quantité produit érronée", 3, produit.getQuantite());
+		assertEquals("Prix hors taxe retourné érroné", 47.50, produit.getPrixHorsTaxe().doubleValue(), 0);
+		assertEquals("Pourcentage taxe érroné", 25, produit.getPourcentageTaxe().doubleValue(), 0);
+		assertEquals("Categorie retournéee érronée", Categorie.AUTRE, produit.getCategorie());
+		assertEquals("Prix total retourné érroné", 178.15, produit.getPrixTTC().doubleValue(), 0);
 	}
 
 	@Test
@@ -111,7 +111,7 @@ public class GestionProduitTest {
 		Produit produit = creerProduit();
 		produit.setCategorie(Categorie.AUTRE);
 		BigDecimal totalTaxe = gestionProduit.calculerTotalPourcentageTaxe(produit);
-		assertEquals(25, totalTaxe.doubleValue(), 0);
+		assertEquals("Pourcentage taxe total érroné", 25, totalTaxe.doubleValue(), 0);
 	}
 
 	private Produit creerProduit() {
@@ -121,7 +121,7 @@ public class GestionProduitTest {
 	@Test
 	public void extraireCategorieDepuisNomProduit() {
 		Categorie categorie = gestionProduit.extraireCategorieDepuisNomProduit(creerProduit());
-		assertEquals(Categorie.AUTRE, categorie);
+		assertEquals("Categorie retournée érronée", Categorie.AUTRE, categorie);
 	}
 
 	@Test
@@ -130,7 +130,7 @@ public class GestionProduitTest {
 		produit.setPrixTTC(BigDecimal.valueOf(25));
 		produit.setPourcentageTaxe(BigDecimal.valueOf(25));
 		BigDecimal differenceAvecTaxe = gestionProduit.calculerDifferenceAvecTaxe(produit);
-		assertEquals(5, differenceAvecTaxe.doubleValue(), 0);
+		assertEquals("différence de taxe rajoutée érronée", 5, differenceAvecTaxe.doubleValue(), 0);
 	}
 
 	@Test
@@ -139,7 +139,7 @@ public class GestionProduitTest {
 			Produit produit = creerProduit();
 			produit.setPourcentageTaxe(BigDecimal.valueOf(25));
 			BigDecimal prixTTC = gestionProduit.calculerPrixTTC(produit);
-			assertEquals(25, prixTTC.doubleValue(), 0);
+			assertEquals("Prix total érroné", 25, prixTTC.doubleValue(), 0);
 		}
 	}
 
@@ -150,7 +150,7 @@ public class GestionProduitTest {
 		produit.setPrixHorsTaxe(BigDecimal.valueOf(12.49));
 		produit.setQuantite(1);
 
-		assertTrue(gestionProduit.verifierValiditeeProduit(produit));
+		assertTrue("Validité Produit érronée", gestionProduit.verifierValiditeeProduit(produit));
 	}
 
 	@Test
@@ -159,7 +159,7 @@ public class GestionProduitTest {
 		produit.setNom(CHOCOLAT);
 		produit.setPrixHorsTaxe(BigDecimal.valueOf(12.49));
 
-		assertFalse(gestionProduit.verifierValiditeeProduit(produit));
+		assertFalse("Validité Produit érronée", gestionProduit.verifierValiditeeProduit(produit));
 	}
 
 	@Test
@@ -168,7 +168,7 @@ public class GestionProduitTest {
 		produit.setPrixHorsTaxe(BigDecimal.valueOf(12.49));
 		produit.setQuantite(2);
 
-		assertFalse(gestionProduit.verifierValiditeeProduit(produit));
+		assertFalse("Validité Produit érronée", gestionProduit.verifierValiditeeProduit(produit));
 	}
 
 	@Test
@@ -178,6 +178,6 @@ public class GestionProduitTest {
 		produit.setPrixHorsTaxe(BigDecimal.valueOf(-12.49));
 		produit.setQuantite(2);
 
-		assertFalse(gestionProduit.verifierValiditeeProduit(produit));
+		assertFalse("Validité Produit érronée", gestionProduit.verifierValiditeeProduit(produit));
 	}
 }
