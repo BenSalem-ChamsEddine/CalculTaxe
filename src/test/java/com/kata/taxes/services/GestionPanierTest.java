@@ -22,7 +22,7 @@ public class GestionPanierTest {
 	@Test
 	public void calculerPrixTTCPanier() {
 		ValeurPanier valeurPanier = gestionPanier.calculerPrixTTCPanier(creerPanier());
-		assertEquals(208.1, valeurPanier.getMontantTotalPanier().doubleValue(), 0);
+		assertEquals("Prix panier érroné", 208.1, valeurPanier.getMontantTotalPanier().doubleValue(), 0);
 	}
 
 	@Test
@@ -33,7 +33,7 @@ public class GestionPanierTest {
 		String produit4Panier3 = "* 2 boîtes de chocolats importés à 11.25€";
 		Panier panier3 = gestionPanier.ajouterProduitsAuPanier(produit1Panier3, produit2Panier3, produit3Panier3, produit4Panier3);
 		ValeurPanier valeurPanier = gestionPanier.calculerPrixTTCPanier(panier3);
-		assertEquals(18.98, valeurPanier.getTotalTaxesPanier().doubleValue(), 0);
+		assertEquals("Total taxe érronée", 18.98, valeurPanier.getTotalTaxesPanier().doubleValue(), 0);
 	}
 
 	private Panier creerPanier() {
@@ -54,6 +54,6 @@ public class GestionPanierTest {
 		String produit2 = "* 1 CD musical à 14.99€";
 		String produit3 = "* 3 barres de chocolat à 0.85€";
 		Panier panier = gestionPanier.ajouterProduitsAuPanier(produit1, produit2, produit3);
-		assertEquals(3, panier.getListeProduit().size());
+		assertEquals("Produits non ajoutés au panier", 3, panier.getListeProduit().size());
 	}
 }
